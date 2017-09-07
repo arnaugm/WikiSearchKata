@@ -1,14 +1,15 @@
+from request_response import Request, RequestContext
+from responder import WikiPageResponder
+from wiki import WikiPage
 
-from responder import *
-from wikiapp import Request
 
-def test_get_wikipage_responder():
-    request = Request(request_type="GET", uri="/foo")
-    responder = responder_for(request)
-    assert isinstance(responder, WikiPageResponder)
+def test_wiki_page_responder_ok():
+    responder = WikiPageResponder()
+    request = Request(request_type="GET", uri="/")
+    root_page = WikiPage(title="FrontPage", uri="/")
+    context = RequestContext(root_page)
 
-def test_get_search_responder():
-    request = Request(request_type="POST", uri="/", data={"search_text": "foo"})
-    responder = responder_for(request)
-    assert isinstance(responder, SearchResponder)
-    
+    response = responder.make_response(request, context)
+
+    assert response.http_code == "200"
+

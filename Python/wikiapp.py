@@ -1,7 +1,7 @@
 
 from traverse import DepthFirstTraverser
 from wiki import WikiPage
-from responder import responder_for
+from responder import WikiPageResponder, SearchResponder
 from request_response import Request, Response, RequestContext
 
 class WikiApp:
@@ -9,6 +9,11 @@ class WikiApp:
         self.root_page = root_page
         
     def handle_request(self, request):
-        responder = responder_for(request)
+        if request.request_type == "GET":
+            responder = WikiPageResponder()
+        elif request.request_type == "POST":
+            responder = SearchResponder()
+        else:
+            raise Exception('Method not supported')
         return responder.make_response(request, RequestContext(self.root_page))
         
