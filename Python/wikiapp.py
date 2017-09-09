@@ -1,8 +1,6 @@
-
-from traverse import DepthFirstTraverser
-from wiki import WikiPage
 from responder import WikiPageResponder, SearchResponder
-from request_response import Request, Response, RequestContext
+from request_response import RequestContext
+
 
 class WikiApp:
     def __init__(self, root_page):
@@ -16,4 +14,3 @@ class WikiApp:
         else:
             raise Exception('Method not supported')
         return responder.make_response(request, RequestContext(self.root_page))
-        

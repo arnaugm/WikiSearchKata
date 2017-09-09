@@ -1,6 +1,4 @@
-
 class WikiPage:
-    
     def __init__(self, title, uri=None, text=None, tags=None):
         self.title = title
         self.text = text or ""

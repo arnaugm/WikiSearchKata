@@ -12,4 +12,3 @@ def test_wiki_page_responder_ok():
     response = responder.make_response(request, context)
 
     assert response.http_code == "200"
-

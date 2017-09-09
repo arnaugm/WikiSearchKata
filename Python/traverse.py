@@ -1,4 +1,3 @@
-
 class DepthFirstTraverser:
     def __init__(self, root):
         self.root = root

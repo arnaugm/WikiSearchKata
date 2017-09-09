@@ -1,6 +1,5 @@
-
 from wiki import *
-from traverse import *
+
 
 def test_create_pages():
     root_page = WikiPage(title="FrontPage", text="some text on the root page", tags={"foo", "bar"})

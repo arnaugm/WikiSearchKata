@@ -2,7 +2,8 @@ import pytest
 
 from wikiapp import *
 from wiki import WikiPage
-from request_response import Request, Response
+from request_response import Request
+
 
 @pytest.mark.skip
 def test_request_response_cycle():
@@ -11,6 +12,7 @@ def test_request_response_cycle():
     request = Request(request_type="GET", uri="/")
     response = myapp.handle_request(request)
     assert response.page.title == "FrontPage"
+
 
 @pytest.mark.skip
 def test_request_a_page():
@@ -21,6 +23,7 @@ def test_request_a_page():
     request = Request(request_type="GET", uri="/Child1")
     response = myapp.handle_request(request)
     assert response.page.title == "Child1"
+
 
 @pytest.mark.skip
 def test_request_a_search():

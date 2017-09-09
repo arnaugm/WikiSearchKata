@@ -1,6 +1,6 @@
-
 from wiki import *
 from traverse import *
+
 
 def test_traverse_pages():
     root = WikiPage("Root")
@@ -30,4 +30,3 @@ def test_traverse_with_loops():
     pages = traverser.traverse()
     visited_in_order = list(map(lambda x: x.title, pages)) 
     assert len(visited_in_order) == 4
-    
