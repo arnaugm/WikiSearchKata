@@ -22,7 +22,7 @@ class SearchResponder:
         matching_pages = (page for page in DepthFirstTraverser(context.root_page).traverse() if self.traverse(page))
         results_page.text = "found term in pages:<ul>"
         for result_page in matching_pages:
-            results_page.text += '<li>'+ result_page.title + '</li>'
+            results_page.text += '<li>' + result_page.title + '</li>'
         results_page.text += "</ul>"
         return Response(page=results_page)
 
