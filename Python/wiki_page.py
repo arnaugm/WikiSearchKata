@@ -6,11 +6,11 @@ class WikiPage:
         self.uri = uri or title
         self.parents = []
         self.children = []
-        
+
     def add_child(self, page):
         self.children.append(page)
         page.add_parent(self)
-        
+
     def add_parent(self, page):
         self.parents.append(page)
         if page.uri == "/":

@@ -1,7 +1,7 @@
 import pytest
 
 from wikiapp import *
-from wiki import WikiPage
+from wiki_page import WikiPage
 from request_response import Request
 
 
@@ -28,7 +28,8 @@ def test_request_a_search():
     child_page = WikiPage(title="Child1", text="a child page", tags=["foo"])
     root_page.add_child(child_page)
     myapp = WikiApp(root_page)
-    request = Request(request_type="POST", uri="/", data={"search_text": "child"})
+    request = Request(request_type="POST", uri="/",
+                      data={"search_text": "child"})
     response = myapp.handle_request(request)
     assert response.page.title == "Search Results"
     assert "Child1" in response.page.text

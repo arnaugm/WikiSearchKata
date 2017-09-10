@@ -1,12 +1,13 @@
 from request_response import Response
-from wiki import WikiPage
+from wiki_page import WikiPage
 from traverse import DepthFirstTraverser
 
 
 class WikiPageResponder:
     def make_response(self, request, context):
         # brute force approach where better approaches exist
-        all_pages = {page.uri: page for page in DepthFirstTraverser(context.root_page).traverse()}
+        all_pages = {page.uri: page for page in
+                     DepthFirstTraverser(context.root_page).traverse()}
         page = all_pages.get(request.uri)
         if page:
             return Response(http_code="200", page=page)
@@ -19,7 +20,9 @@ class SearchResponder:
         self.request = request
         self.context = context
         results_page = WikiPage(self.title())
-        matching_pages = (page for page in DepthFirstTraverser(context.root_page).traverse() if self.traverse(page))
+        matching_pages = (page for page in
+                          DepthFirstTraverser(context.root_page).traverse()
+                          if self.traverse(page))
         results_page.text = "found term in pages:<ul>"
         for result_page in matching_pages:
             results_page.text += '<li>' + result_page.title + '</li>'

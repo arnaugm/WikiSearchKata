@@ -1,6 +1,6 @@
 from request_response import Request, RequestContext
 from responder import WikiPageResponder, SearchResponder
-from wiki import WikiPage
+from wiki_page import WikiPage
 
 
 def test_wiki_page_responder_ok():
@@ -28,7 +28,8 @@ def test_wiki_page_responder_ko():
 
 def test_search_responder_no_results():
     responder = SearchResponder()
-    request = Request(request_type="POST", uri="/", data={"search_text": "term"})
+    request = Request(request_type="POST", uri="/",
+                      data={"search_text": "term"})
     root_page = WikiPage(title="FrontPage", uri="/")
     context = RequestContext(root_page)
 
@@ -39,10 +40,12 @@ def test_search_responder_no_results():
 
 def test_search_responder_with_results():
     responder = SearchResponder()
-    request = Request(request_type="POST", uri="/", data={"search_text": "spam"})
+    request = Request(request_type="POST", uri="/",
+                      data={"search_text": "spam"})
     root_page = WikiPage(title="SpamPage", uri="/spam", text="spam")
     context = RequestContext(root_page)
 
     response = responder.make_response(request, context)
 
-    assert response.page.text == "found term in pages:<ul><li>SpamPage</li></ul>"
+    assert response.page.text == "found term in pages:" \
+                                 "<ul><li>SpamPage</li></ul>"
