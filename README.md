@@ -1,5 +1,4 @@
-Wiki Search Kata
-================
+# Wiki Search Kata
 
 We are developing a wiki application.
 With this application you can read wiki pages and find pages containing a search term, but we want more!
@@ -39,7 +38,9 @@ Our *"responder.py"* provides different responses depending on what we are askin
   - uri: "/search-results"
   ```
   
-Our next task will be to extend the search functionality of the wiki with the following features:
+## Tasks
+
+We'll extend the search functionality of the wiki with the following features:
 - **Where Used**: returns a results page with a list of pages referencing the given page.
 
   *Request*
